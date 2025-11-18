@@ -1,9 +1,0 @@
-{
-  "routes": [
-    {
-      "route": "/api/getnoticias",
-      "allowedRoles": [ "anonymous" ],
-      "rewrite": "https://testeseguranca.azurewebsites.net/api/home/noticias/getnoticiasporfiltro"
-    }
-  ]
-}
