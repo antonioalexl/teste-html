@@ -34,6 +34,12 @@
         .noticia small {
             color: #666;
         }
+
+        button {
+            padding: 10px 16px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -41,6 +47,7 @@
 <h1>Notícias</h1>
 
 <button onclick="carregarNoticias()">Carregar Notícias</button>
+<button onclick="chamarNgrok()">Chamar NGROK</button>
 
 <div id="listaNoticias"></div>
 
@@ -89,6 +96,28 @@ async function carregarNoticias() {
     } catch (e) {
         console.error("Erro:", e);
         container.innerHTML = "<p>Erro inesperado.</p>";
+    }
+}
+
+async function chamarNgrok() {
+    const url = "http://4.tcp.eu.ngrok.io:13759/";
+    
+    try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            alert("Erro na requisição: " + response.status);
+            return;
+        }
+
+        const texto = await response.text();
+        console.log("Retorno NGROK:", texto);
+
+        alert("Resposta NGROK recebida (veja no console).");
+
+    } catch (err) {
+        console.error("Erro NGROK:", err);
+        alert("Erro ao chamar NGROK.");
     }
 }
 </script>
